@@ -1,0 +1,11 @@
+{
+  "name": "cointrendz-radar",
+  "version": "1.0.0",
+  "description": "Real-Time Crypto Sentiment & Trending Coins Dashboard",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "author": "CoinTrendz Radar",
+  "license": "MIT"
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - CoinTrendz Radar</title>
+  <meta name="description" content="Learn about CoinTrendz Radar, a free real-time cryptocurrency sentiment dashboard.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cointrendz-radar.vercel.app/about.html">
+  <meta property="og:title" content="About - CoinTrendz Radar">
+  <meta property="og:description" content="Learn about CoinTrendz Radar, a free real-time cryptocurrency sentiment dashboard.">
+  <meta property="og:url" content="https://cointrendz-radar.vercel.app/about.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: { extend: { colors: { primary: '#6366F1' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-primary)]/80 border-b border-[var(--border-color)]">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold" style="color: var(--accent-indigo);">
+        <span>&#128225;</span> CoinTrendz Radar
+      </a>
+      <div class="flex items-center gap-2">
+        <select id="lang-selector" class="lang-selector text-xs" aria-label="Language selector">
+          <option value="en">EN</option><option value="ko">KO</option><option value="ja">JA</option><option value="zh">ZH</option><option value="es">ES</option><option value="fr">FR</option><option value="de">DE</option><option value="pt">PT</option>
+        </select>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span id="theme-icon">&#127769;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-10">
+    <article class="card prose max-w-none">
+      <h1 class="text-3xl font-bold mb-6" data-i18n="about">About CoinTrendz Radar</h1>
+
+      <h2 class="text-xl font-semibold mt-6 mb-3">What is CoinTrendz Radar?</h2>
+      <p class="mb-4" style="color: var(--text-secondary);">
+        CoinTrendz Radar is a free, real-time cryptocurrency dashboard that provides at-a-glance market sentiment analysis. We display the Fear & Greed Index, today's top gaining and losing coins, and trending search coins -- all updated automatically every 60 seconds.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-6 mb-3">Who is it for?</h2>
+      <ul class="list-disc list-inside mb-4" style="color: var(--text-secondary);">
+        <li>Crypto traders and investors (beginner to intermediate)</li>
+        <li>Market watchers who want quick sentiment snapshots</li>
+        <li>Content creators looking for trending coin data</li>
+        <li>Anyone curious about cryptocurrency market conditions</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mt-6 mb-3">Data Sources</h2>
+      <p class="mb-4" style="color: var(--text-secondary);">
+        All cryptocurrency data is sourced from <strong>CoinGecko</strong>, one of the most trusted crypto data aggregators. The Fear & Greed Index comes from <strong>Alternative.me</strong>. We do not provide financial advice -- all data is for informational purposes only.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-6 mb-3">Features</h2>
+      <ul class="list-disc list-inside mb-4" style="color: var(--text-secondary);">
+        <li>Fear & Greed Index gauge with real-time updates</li>
+        <li>Bitcoin and Ethereum price cards with 24-hour sparkline charts</li>
+        <li>Top 10 gaining coins by 24-hour percentage change</li>
+        <li>Top 10 losing coins by 24-hour percentage change</li>
+        <li>Trending coins from CoinGecko search data</li>
+        <li>Auto-refresh every 60 seconds</li>
+        <li>Dark and light mode themes</li>
+        <li>Multi-language support (8 languages)</li>
+        <li>Mobile-responsive design</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mt-6 mb-3">Contact</h2>
+      <p style="color: var(--text-secondary);">
+        For feedback, suggestions, or inquiries, email us at
+        <a href="mailto:taeshinkim11@gmail.com" class="text-primary underline">taeshinkim11@gmail.com</a>.
+      </p>
+    </article>
+  </main>
+
+  <footer class="border-t border-[var(--border-color)] mt-8" style="background: var(--bg-card);">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-center text-sm" style="color: var(--text-secondary);">
+      <nav class="flex justify-center gap-4 mb-3">
+        <a href="/" class="hover:text-primary">Home</a>
+        <a href="about.html" class="hover:text-primary">About</a>
+        <a href="faq.html" class="hover:text-primary">FAQ</a>
+        <a href="privacy.html" class="hover:text-primary">Privacy</a>
+        <a href="terms.html" class="hover:text-primary">Terms</a>
+      </nav>
+      <p>&copy; 2026 CoinTrendz Radar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal theme + i18n for static pages
+    (function(){
+      const saved = localStorage.getItem('ctr_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('theme-icon').textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('ctr_theme', next);
+        document.getElementById('theme-icon').textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+      });
+    })();
+  </script>
+</body>
+</html>

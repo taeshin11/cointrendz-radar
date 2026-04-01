@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoinTrendz Radar - Real-Time Crypto Sentiment & Trending Coins</title>
+  <meta name="description" content="Real-time crypto Fear & Greed Index, trending coins, and top gainers. Free cryptocurrency sentiment dashboard updated every 60 seconds.">
+  <meta name="keywords" content="crypto fear greed index, trending crypto today, top gaining crypto, cryptocurrency sentiment, bitcoin fear and greed, crypto gainers today, trending cryptocurrency">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="CoinTrendz Radar">
+  <link rel="canonical" href="https://cointrendz-radar.vercel.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CoinTrendz Radar - Real-Time Crypto Sentiment">
+  <meta property="og:description" content="Track crypto Fear & Greed Index, trending coins, and top gainers in real time.">
+  <meta property="og:image" content="https://cointrendz-radar.vercel.app/assets/og-image.png">
+  <meta property="og:url" content="https://cointrendz-radar.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoinTrendz Radar">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoinTrendz Radar - Real-Time Crypto Sentiment">
+  <meta name="twitter:description" content="Track crypto Fear & Greed Index, trending coins, and top gainers in real time.">
+  <meta name="twitter:image" content="https://cointrendz-radar.vercel.app/assets/og-image.png">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CoinTrendz Radar",
+    "description": "Real-time crypto sentiment dashboard with Fear & Greed Index and trending coins.",
+    "url": "https://cointrendz-radar.vercel.app/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            gain: '#22C55E',
+            loss: '#EF4444',
+            amber: '#F59E0B'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-primary)]/80 border-b border-[var(--border-color)]">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold" style="color: var(--accent-indigo);">
+          <span aria-hidden="true">&#128225;</span>
+          <span data-i18n="title">CoinTrendz Radar</span>
+        </a>
+      </div>
+      <nav class="hidden md:flex items-center gap-4 text-sm" aria-label="Main navigation">
+        <a href="/" class="hover:text-primary transition-colors" data-i18n="home">Home</a>
+        <a href="about.html" class="hover:text-primary transition-colors" data-i18n="about">About</a>
+        <a href="faq.html" class="hover:text-primary transition-colors" data-i18n="faq">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <select id="lang-selector" class="lang-selector text-xs" aria-label="Language selector">
+          <option value="en">EN</option>
+          <option value="ko">KO</option>
+          <option value="ja">JA</option>
+          <option value="zh">ZH</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="pt">PT</option>
+        </select>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" data-i18n-title="dark_mode">
+          <span id="theme-icon">&#127769;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Ad Banner - Top -->
+  <div class="max-w-7xl mx-auto px-4 mt-4">
+    <div class="ad-slot" id="ad-header-banner" data-ad-type="adsterra" data-ad-key="ADSTERRA_KEY_HERE" role="complementary" aria-label="Advertisement">
+      <span style="color:var(--text-secondary);font-size:0.75rem;">Ad Space</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-6">
+
+    <!-- Status Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-6 text-sm" style="color: var(--text-secondary);">
+      <div class="flex items-center gap-3">
+        <span id="refresh-indicator">&#9679;</span>
+        <span data-i18n="last_updated">Last updated</span>:
+        <span id="last-updated" class="font-mono">--:--:--</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span data-i18n="refresh_in">Refresh in</span>:
+        <span id="refresh-countdown" class="font-mono">60s</span>
+      </div>
+    </div>
+
+    <!-- Top Row: Fear & Greed + Price Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" aria-label="Market overview">
+
+      <!-- Fear & Greed Index -->
+      <div class="card col-span-1 text-center">
+        <h2 class="text-lg font-semibold mb-4" data-i18n="fear_greed">Fear & Greed Index</h2>
+        <div class="gauge-container">
+          <canvas id="fear-greed-gauge" aria-label="Fear and Greed gauge chart"></canvas>
+          <div class="gauge-value" id="fng-value">--</div>
+        </div>
+        <p class="gauge-label" id="fng-label">Loading...</p>
+      </div>
+
+      <!-- BTC Price Card -->
+      <div class="price-card col-span-1">
+        <div class="flex items-center gap-3 mb-3">
+          <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="Bitcoin" width="32" height="32" class="rounded-full">
+          <div>
+            <h3 class="font-semibold" data-i18n="btc_price">Bitcoin (BTC)</h3>
+            <span id="btc-change" class="font-mono text-sm">--</span>
+          </div>
+        </div>
+        <div class="price font-mono mb-2" id="btc-price">$--,---.--</div>
+        <div class="grid grid-cols-2 gap-2 text-xs mb-3" style="color: var(--text-secondary);">
+          <div><span data-i18n="market_cap">Market Cap</span>: <span id="btc-mcap" class="font-mono">--</span></div>
+          <div><span data-i18n="volume">24h Vol</span>: <span id="btc-vol" class="font-mono">--</span></div>
+        </div>
+        <div class="sparkline-container">
+          <canvas id="btc-sparkline" aria-label="Bitcoin 24h price chart"></canvas>
+        </div>
+      </div>
+
+      <!-- ETH Price Card -->
+      <div class="price-card col-span-1">
+        <div class="flex items-center gap-3 mb-3">
+          <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="Ethereum" width="32" height="32" class="rounded-full">
+          <div>
+            <h3 class="font-semibold" data-i18n="eth_price">Ethereum (ETH)</h3>
+            <span id="eth-change" class="font-mono text-sm">--</span>
+          </div>
+        </div>
+        <div class="price font-mono mb-2" id="eth-price">$--,---.--</div>
+        <div class="grid grid-cols-2 gap-2 text-xs mb-3" style="color: var(--text-secondary);">
+          <div><span data-i18n="market_cap">Market Cap</span>: <span id="eth-mcap" class="font-mono">--</span></div>
+          <div><span data-i18n="volume">24h Vol</span>: <span id="eth-vol" class="font-mono">--</span></div>
+        </div>
+        <div class="sparkline-container">
+          <canvas id="eth-sparkline" aria-label="Ethereum 24h price chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Coins -->
+    <section class="mb-8" aria-label="Trending coins">
+      <h2 class="text-xl font-bold mb-4" data-i18n="trending">Trending Coins</h2>
+      <div id="trending-container" class="flex flex-wrap gap-3">
+        <!-- Skeleton placeholders -->
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+        <div class="trending-badge skeleton" style="width:140px;height:40px;"></div>
+      </div>
+    </section>
+
+    <!-- Ad In-Feed -->
+    <div class="mb-8">
+      <div class="ad-slot" id="ad-in-feed" data-ad-type="adsterra" data-ad-key="ADSTERRA_KEY_HERE" role="complementary" aria-label="Advertisement">
+        <span style="color:var(--text-secondary);font-size:0.75rem;">Ad Space</span>
+      </div>
+    </div>
+
+    <!-- Gainers / Losers Tables -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8" aria-label="Top gainers and losers">
+
+      <!-- Top Gainers -->
+      <div class="card">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <span style="color: var(--accent-green);">&#9650;</span>
+          <span data-i18n="top_gainers">Top Gainers (24h)</span>
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="coin-table" aria-label="Top gaining cryptocurrencies">
+            <thead>
+              <tr>
+                <th data-i18n="rank">#</th>
+                <th data-i18n="coin">Coin</th>
+                <th data-i18n="price">Price</th>
+                <th data-i18n="change_24h">24h Change</th>
+              </tr>
+            </thead>
+            <tbody id="gainers-tbody">
+              <tr><td colspan="4" class="text-center py-8" style="color:var(--text-secondary);">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top Losers -->
+      <div class="card">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <span style="color: var(--accent-red);">&#9660;</span>
+          <span data-i18n="top_losers">Top Losers (24h)</span>
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="coin-table" aria-label="Top losing cryptocurrencies">
+            <thead>
+              <tr>
+                <th data-i18n="rank">#</th>
+                <th data-i18n="coin">Coin</th>
+                <th data-i18n="price">Price</th>
+                <th data-i18n="change_24h">24h Change</th>
+              </tr>
+            </thead>
+            <tbody id="losers-tbody">
+              <tr><td colspan="4" class="text-center py-8" style="color:var(--text-secondary);">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Sharing -->
+    <section class="mb-8 text-center" aria-label="Social sharing">
+      <h3 class="text-sm font-medium mb-3" style="color: var(--text-secondary);" data-i18n="share">Share</h3>
+      <div class="flex justify-center gap-3">
+        <a id="share-twitter" href="#" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Share on Twitter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a id="share-facebook" href="#" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Share on Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a id="share-reddit" href="#" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Share on Reddit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 0-.463.327.327 0 0 0-.462 0c-.545.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.205-.094z"/></svg>
+        </a>
+        <a id="share-telegram" href="#" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Share on Telegram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Ad Footer -->
+    <div class="mb-8">
+      <div class="ad-slot" id="ad-footer" data-ad-type="adsense" data-ad-slot="ADSENSE_SLOT_HERE" role="complementary" aria-label="Advertisement">
+        <span style="color:var(--text-secondary);font-size:0.75rem;">Ad Space - AdSense</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--border-color)] mt-8" style="background: var(--bg-card);">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Links -->
+        <div>
+          <h4 class="font-semibold mb-3">CoinTrendz Radar</h4>
+          <nav class="flex flex-col gap-2 text-sm" style="color: var(--text-secondary);" aria-label="Footer navigation">
+            <a href="about.html" class="hover:text-primary transition-colors" data-i18n="about">About</a>
+            <a href="faq.html" class="hover:text-primary transition-colors" data-i18n="faq">FAQ</a>
+            <a href="privacy.html" class="hover:text-primary transition-colors" data-i18n="privacy">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-primary transition-colors" data-i18n="terms">Terms of Service</a>
+          </nav>
+        </div>
+        <!-- Feedback -->
+        <div>
+          <h4 class="font-semibold mb-3" data-i18n="feedback">Feedback</h4>
+          <p class="text-sm" style="color: var(--text-secondary);">
+            <a href="mailto:taeshinkim11@gmail.com" class="hover:text-primary transition-colors underline">taeshinkim11@gmail.com</a>
+          </p>
+        </div>
+        <!-- Visitor Counter -->
+        <div class="text-right">
+          <div class="visitor-counter">
+            <span data-i18n="visitors_today">Today</span>: <strong id="visitors-today">--</strong>
+            &nbsp;|&nbsp;
+            <span data-i18n="visitors_total">Total Visitors</span>: <strong id="visitors-total">--</strong>
+          </div>
+          <p class="text-xs mt-2" style="color: var(--text-secondary);" data-i18n="powered_by">Powered by CoinGecko API</p>
+          <p class="text-xs mt-1" style="color: var(--text-secondary);" data-i18n="disclaimer">Not financial advice. Data may be delayed.</p>
+        </div>
+      </div>
+      <div class="text-center text-xs mt-6" style="color: var(--text-secondary);">
+        &copy; 2026 CoinTrendz Radar. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/visitor.js"></script>
+  <script src="js/ads.js"></script>
+  <script src="js/sheets-webhook.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

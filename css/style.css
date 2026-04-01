@@ -1,0 +1,306 @@
+/* CoinTrendz Radar - Custom Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #F5F3F0;
+  --bg-card: #FAFAF8;
+  --bg-dark: #1E1E2E;
+  --bg-dark-card: #2A2A3C;
+  --text-primary: #2D2D3A;
+  --text-secondary: #6B7280;
+  --accent-green: #22C55E;
+  --accent-red: #EF4444;
+  --accent-indigo: #6366F1;
+  --accent-amber: #F59E0B;
+  --border-color: #E5E7EB;
+  --card-radius: 12px;
+  --btn-radius: 8px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1E1E2E;
+  --bg-card: #2A2A3C;
+  --text-primary: #E5E7EB;
+  --text-secondary: #9CA3AF;
+  --border-color: #374151;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Card styling */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Fear & Greed Gauge */
+.gauge-container {
+  position: relative;
+  width: 240px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.gauge-value {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.gauge-label {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Table styling */
+.coin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.coin-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.coin-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+}
+
+.coin-table tr:hover {
+  background-color: rgba(99, 102, 241, 0.04);
+}
+
+[data-theme="dark"] .coin-table tr:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.coin-table img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Positive / Negative colors */
+.text-gain { color: var(--accent-green); }
+.text-loss { color: var(--accent-red); }
+
+/* Trending coin badge */
+.trending-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.trending-badge:hover {
+  transform: scale(1.05);
+}
+
+.trending-badge img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* Price card */
+.price-card {
+  background: var(--bg-card);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  transition: background-color 0.3s;
+}
+
+.price-card .price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.sparkline-container {
+  height: 60px;
+  width: 100%;
+}
+
+/* Ad slots */
+.ad-slot {
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--card-radius);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  overflow: hidden;
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--btn-radius);
+  padding: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent-indigo);
+  color: white;
+}
+
+/* Language selector */
+.lang-selector {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--btn-radius);
+  padding: 6px 10px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Social share buttons */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.share-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--accent-indigo);
+  color: white;
+  border-color: var(--accent-indigo);
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--border-color) 25%, transparent 50%, var(--border-color) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Refresh indicator */
+.refresh-pulse {
+  animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Visitor counter */
+.visitor-counter {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Scroll to top */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-indigo);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+  z-index: 50;
+  transition: transform 0.2s;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .card { padding: 24px; }
+}
+
+@media (max-width: 640px) {
+  .gauge-container {
+    width: 200px;
+    height: 120px;
+  }
+  .gauge-value {
+    font-size: 2rem;
+  }
+  .price-card .price {
+    font-size: 1.4rem;
+  }
+}

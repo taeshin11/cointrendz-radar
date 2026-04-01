@@ -1,0 +1,47 @@
+CoinTrendz Radar - Progress Tracker
+====================================
+
+Current Milestone: M1 - Core Dashboard (MVP)
+Current Feature: F01 - Fear & Greed gauge
+
+Milestones:
+-----------
+[ ] M1 - Core Dashboard (MVP)
+    [ ] F01 - Fear & Greed gauge
+    [ ] F02 - Top gainers table
+    [ ] F03 - Top losers table
+    [ ] F04 - Trending coins section
+    [ ] S07 - Semantic HTML structure
+
+[ ] M2 - Price Cards & Auto-Refresh
+    [ ] F05 - BTC price card with sparkline
+    [ ] F06 - ETH price card with sparkline
+    [ ] F07 - Auto-refresh every 60s
+    [ ] F08 - Last updated timestamp
+    [ ] F09 - Responsive mobile-first layout
+
+[ ] M3 - SEO, Ads & Analytics
+    [ ] S01 - Meta tags
+    [ ] S02 - Open Graph tags
+    [ ] S03 - Twitter Card tags
+    [ ] S04 - JSON-LD structured data
+    [ ] S05 - sitemap.xml
+    [ ] S06 - robots.txt
+    [ ] S08 - Canonical URL tag
+    [ ] A01 - Adsterra ad placeholders
+    [ ] A02 - Adsterra ad key injection
+    [ ] A04 - Visitor counter
+    [ ] A05 - Google Sheets webhook
+    [ ] F10 - Dark/light mode toggle
+
+[ ] M4 - i18n, Static Pages & Polish
+    [ ] I01 - Auto i18n browser detection
+    [ ] I02 - Support 8+ languages
+    [ ] I03 - Language selector dropdown
+    [ ] I04 - Social sharing buttons
+    [ ] I05 - Feedback email link
+    [ ] P01 - About page
+    [ ] P02 - FAQ page
+    [ ] P03 - Privacy Policy page
+    [ ] P04 - Terms of Service page
+    [ ] A03 - Google AdSense fallback

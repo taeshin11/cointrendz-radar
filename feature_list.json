@@ -1,0 +1,56 @@
+{
+  "milestones": {
+    "M1": {
+      "name": "Core Dashboard (MVP)",
+      "features": [
+        { "id": "F01", "name": "Fear & Greed gauge", "status": "pending" },
+        { "id": "F02", "name": "Top gainers table", "status": "pending" },
+        { "id": "F03", "name": "Top losers table", "status": "pending" },
+        { "id": "F04", "name": "Trending coins section", "status": "pending" },
+        { "id": "S07", "name": "Semantic HTML structure", "status": "pending" }
+      ]
+    },
+    "M2": {
+      "name": "Price Cards & Auto-Refresh",
+      "features": [
+        { "id": "F05", "name": "BTC price card with sparkline", "status": "pending" },
+        { "id": "F06", "name": "ETH price card with sparkline", "status": "pending" },
+        { "id": "F07", "name": "Auto-refresh every 60s", "status": "pending" },
+        { "id": "F08", "name": "Last updated timestamp", "status": "pending" },
+        { "id": "F09", "name": "Responsive mobile-first layout", "status": "pending" }
+      ]
+    },
+    "M3": {
+      "name": "SEO, Ads & Analytics",
+      "features": [
+        { "id": "S01", "name": "Meta tags", "status": "pending" },
+        { "id": "S02", "name": "Open Graph tags", "status": "pending" },
+        { "id": "S03", "name": "Twitter Card tags", "status": "pending" },
+        { "id": "S04", "name": "JSON-LD structured data", "status": "pending" },
+        { "id": "S05", "name": "sitemap.xml", "status": "pending" },
+        { "id": "S06", "name": "robots.txt", "status": "pending" },
+        { "id": "S08", "name": "Canonical URL tag", "status": "pending" },
+        { "id": "A01", "name": "Adsterra ad placeholders", "status": "pending" },
+        { "id": "A02", "name": "Adsterra ad key injection", "status": "pending" },
+        { "id": "A04", "name": "Visitor counter", "status": "pending" },
+        { "id": "A05", "name": "Google Sheets webhook", "status": "pending" },
+        { "id": "F10", "name": "Dark/light mode toggle", "status": "pending" }
+      ]
+    },
+    "M4": {
+      "name": "i18n, Static Pages & Polish",
+      "features": [
+        { "id": "I01", "name": "Auto i18n browser detection", "status": "pending" },
+        { "id": "I02", "name": "Support 8+ languages", "status": "pending" },
+        { "id": "I03", "name": "Language selector dropdown", "status": "pending" },
+        { "id": "I04", "name": "Social sharing buttons", "status": "pending" },
+        { "id": "I05", "name": "Feedback email link", "status": "pending" },
+        { "id": "P01", "name": "About page", "status": "pending" },
+        { "id": "P02", "name": "FAQ page", "status": "pending" },
+        { "id": "P03", "name": "Privacy Policy page", "status": "pending" },
+        { "id": "P04", "name": "Terms of Service page", "status": "pending" },
+        { "id": "A03", "name": "Google AdSense fallback", "status": "pending" }
+      ]
+    }
+  }
+}

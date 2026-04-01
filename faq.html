@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - CoinTrendz Radar</title>
+  <meta name="description" content="Frequently asked questions about CoinTrendz Radar cryptocurrency dashboard.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cointrendz-radar.vercel.app/faq.html">
+  <meta property="og:title" content="FAQ - CoinTrendz Radar">
+  <meta property="og:description" content="Frequently asked questions about CoinTrendz Radar cryptocurrency dashboard.">
+  <meta property="og:url" content="https://cointrendz-radar.vercel.app/faq.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: { extend: { colors: { primary: '#6366F1' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
+  <!-- FAQ JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Fear & Greed Index?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Fear & Greed Index measures market sentiment on a scale of 0 to 100. Values near 0 indicate extreme fear (potential buying opportunity), while values near 100 indicate extreme greed (potential market correction). The index is calculated from factors including volatility, market momentum, social media, and surveys."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often does the data update?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The dashboard auto-refreshes every 60 seconds, pulling the latest data from CoinGecko and Alternative.me APIs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CoinTrendz Radar free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CoinTrendz Radar is completely free to use. No account or subscription is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CoinTrendz Radar provides data for informational purposes only. Always do your own research and consult a financial advisor before making investment decisions."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-primary)]/80 border-b border-[var(--border-color)]">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold" style="color: var(--accent-indigo);">
+        <span>&#128225;</span> CoinTrendz Radar
+      </a>
+      <div class="flex items-center gap-2">
+        <select id="lang-selector" class="lang-selector text-xs" aria-label="Language selector">
+          <option value="en">EN</option><option value="ko">KO</option><option value="ja">JA</option><option value="zh">ZH</option><option value="es">ES</option><option value="fr">FR</option><option value="de">DE</option><option value="pt">PT</option>
+        </select>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span id="theme-icon">&#127769;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-10">
+    <article class="card">
+      <h1 class="text-3xl font-bold mb-6" data-i18n="faq">Frequently Asked Questions</h1>
+
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold mb-2">What is the Fear & Greed Index?</h2>
+          <p style="color: var(--text-secondary);">The Fear & Greed Index measures market sentiment on a scale of 0 to 100. Values near 0 indicate extreme fear (potential buying opportunity), while values near 100 indicate extreme greed (potential market correction). The index is calculated from factors including volatility, market momentum, social media, and surveys.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">How often does the data update?</h2>
+          <p style="color: var(--text-secondary);">The dashboard auto-refreshes every 60 seconds, pulling the latest data from CoinGecko and Alternative.me APIs. You can see the countdown timer in the top bar.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Is CoinTrendz Radar free?</h2>
+          <p style="color: var(--text-secondary);">Yes, CoinTrendz Radar is completely free to use. No account or subscription is required.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Where does the data come from?</h2>
+          <p style="color: var(--text-secondary);">Cryptocurrency prices, market data, and trending coin data are sourced from the CoinGecko API. The Fear & Greed Index is sourced from Alternative.me.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">How are "Top Gainers" and "Top Losers" determined?</h2>
+          <p style="color: var(--text-secondary);">We fetch the top 100 coins by market cap from CoinGecko and sort them by their 24-hour percentage price change. The top 10 positive changes are "gainers" and the top 10 negative changes are "losers."</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">What are "Trending Coins"?</h2>
+          <p style="color: var(--text-secondary);">Trending coins are the most searched coins on CoinGecko in the last 24 hours. This reflects what the crypto community is currently interested in.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Is this financial advice?</h2>
+          <p style="color: var(--text-secondary);">No. CoinTrendz Radar provides data for informational purposes only. Always do your own research (DYOR) and consult a qualified financial advisor before making investment decisions.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Can I change the language?</h2>
+          <p style="color: var(--text-secondary);">Yes. Use the language selector in the top-right corner of the page. We support English, Korean, Japanese, Chinese, Spanish, French, German, and Portuguese.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-2">How can I provide feedback?</h2>
+          <p style="color: var(--text-secondary);">Send us an email at <a href="mailto:taeshinkim11@gmail.com" class="text-primary underline">taeshinkim11@gmail.com</a>. We welcome bug reports, feature suggestions, and general feedback.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-[var(--border-color)] mt-8" style="background: var(--bg-card);">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-center text-sm" style="color: var(--text-secondary);">
+      <nav class="flex justify-center gap-4 mb-3">
+        <a href="/" class="hover:text-primary">Home</a>
+        <a href="about.html" class="hover:text-primary">About</a>
+        <a href="faq.html" class="hover:text-primary">FAQ</a>
+        <a href="privacy.html" class="hover:text-primary">Privacy</a>
+        <a href="terms.html" class="hover:text-primary">Terms</a>
+      </nav>
+      <p>&copy; 2026 CoinTrendz Radar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const saved = localStorage.getItem('ctr_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('theme-icon').textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('ctr_theme', next);
+        document.getElementById('theme-icon').textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+      });
+    })();
+  </script>
+</body>
+</html>
