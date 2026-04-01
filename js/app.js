@@ -66,6 +66,8 @@ const App = (() => {
       }
     } catch (err) {
       console.error('Fear & Greed load failed:', err);
+      const labelEl = document.getElementById('fng-label');
+      if (labelEl) labelEl.textContent = 'Data unavailable';
     }
   }
 
@@ -86,6 +88,11 @@ const App = (() => {
       renderTable('losers-tbody', losers);
     } catch (err) {
       console.error('Gainers/Losers load failed:', err);
+      const gTbody = document.getElementById('gainers-tbody');
+      const lTbody = document.getElementById('losers-tbody');
+      const errorMsg = '<tr><td colspan="4" class="text-center py-8" style="color:var(--text-secondary);">Unable to load data. Retrying...</td></tr>';
+      if (gTbody) gTbody.innerHTML = errorMsg;
+      if (lTbody) lTbody.innerHTML = errorMsg;
     }
   }
 
@@ -133,6 +140,8 @@ const App = (() => {
       }).join('');
     } catch (err) {
       console.error('Trending load failed:', err);
+      const container = document.getElementById('trending-container');
+      if (container) container.innerHTML = '<p style="color:var(--text-secondary);">Unable to load trending coins. Retrying...</p>';
     }
   }
 
@@ -238,6 +247,17 @@ const App = (() => {
     }
   }
 
+  // ---- Mobile Menu ----
+  function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+
   // ---- Scroll to Top ----
   function initScrollToTop() {
     const btn = document.getElementById('scroll-top');
@@ -271,6 +291,7 @@ const App = (() => {
   // ---- Init ----
   async function init() {
     initTheme();
+    initMobileMenu();
     initScrollToTop();
     initSharing();
 

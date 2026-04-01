@@ -29,6 +29,13 @@ const API = (() => {
 
     try {
       const res = await fetch(url);
+      if (res.status === 429) {
+        // Rate limited - increase cache TTL and use fallback
+        console.warn(`Rate limited on ${cacheKey}. Using cached data.`);
+        const fallback = localStorage.getItem(`ctr_${cacheKey}`);
+        if (fallback) return JSON.parse(fallback);
+        throw new Error('Rate limited');
+      }
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       setCache(cacheKey, data);
