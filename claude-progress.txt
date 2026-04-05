@@ -45,3 +45,14 @@ Milestones:
     [X] P03 - Privacy Policy page
     [X] P04 - Terms of Service page
     [X] A03 - Google AdSense fallback
+
+[X] M5 - SEO Boost, PWA & Feedback (2026-04-02)
+    [X] PWA manifest.json with theme/icons
+    [X] <link rel="manifest"> in index.html
+    [X] Floating feedback widget (bottom-right FAB + modal + mailto)
+    [X] i18n keys for feedback widget in all 8 languages
+    [X] Hreflang SEO tags for all 8 languages
+    [X] Preconnect/dns-prefetch hints for CoinGecko, alternative.me, jsdelivr
+    [X] ?lang= URL param support in i18n.detectLanguage()
+    [X] sitemap.xml lastmod updated to 2026-04-02
+    Deployed: https://cointrendz-radar.vercel.app

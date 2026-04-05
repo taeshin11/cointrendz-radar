@@ -42,6 +42,31 @@
   }
   </script>
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6366F1">
+
+  <!-- Hreflang SEO -->
+  <link rel="alternate" hreflang="x-default" href="https://cointrendz-radar.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://cointrendz-radar.vercel.app/">
+  <link rel="alternate" hreflang="ko" href="https://cointrendz-radar.vercel.app/?lang=ko">
+  <link rel="alternate" hreflang="ja" href="https://cointrendz-radar.vercel.app/?lang=ja">
+  <link rel="alternate" hreflang="zh" href="https://cointrendz-radar.vercel.app/?lang=zh">
+  <link rel="alternate" hreflang="es" href="https://cointrendz-radar.vercel.app/?lang=es">
+  <link rel="alternate" hreflang="fr" href="https://cointrendz-radar.vercel.app/?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://cointrendz-radar.vercel.app/?lang=de">
+  <link rel="alternate" hreflang="pt" href="https://cointrendz-radar.vercel.app/?lang=pt">
+
+  <!-- Preconnect hints for external APIs -->
+  <link rel="preconnect" href="https://api.coingecko.com">
+  <link rel="dns-prefetch" href="https://api.coingecko.com">
+  <link rel="preconnect" href="https://api.alternative.me">
+  <link rel="dns-prefetch" href="https://api.alternative.me">
+  <link rel="preconnect" href="https://assets.coingecko.com">
+  <link rel="dns-prefetch" href="https://assets.coingecko.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 
@@ -341,6 +366,128 @@
   <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
+
+  <!-- Feedback Widget -->
+  <style>
+    #feedback-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #6366F1;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #feedback-fab:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(99,102,241,0.65); }
+    #feedback-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 10000;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+    #feedback-modal-overlay.open { display: flex; }
+    #feedback-modal {
+      background: var(--bg-card, #1e1e2e);
+      border: 1px solid var(--border-color, #333);
+      border-radius: 16px;
+      padding: 20px;
+      width: 320px;
+      max-width: 90vw;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    #feedback-modal h3 { margin: 0 0 12px; font-size: 1rem; font-weight: 600; }
+    #feedback-modal textarea {
+      width: 100%;
+      min-height: 100px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color, #444);
+      background: var(--bg-primary, #13131f);
+      color: inherit;
+      padding: 10px;
+      font-size: 0.875rem;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    #feedback-modal-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+    #feedback-submit-btn {
+      background: #6366F1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    #feedback-submit-btn:hover { background: #4f52d4; }
+    #feedback-close-btn {
+      background: transparent;
+      border: 1px solid var(--border-color, #555);
+      color: inherit;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+  </style>
+
+  <button id="feedback-fab" aria-label="Send Feedback" title="Send Feedback">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </button>
+
+  <div id="feedback-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
+    <div id="feedback-modal">
+      <h3 id="feedback-modal-title" data-i18n="feedback_modal_title">Send Feedback</h3>
+      <textarea id="feedback-text" data-i18n-placeholder="feedback_placeholder" placeholder="Your message..."></textarea>
+      <div id="feedback-modal-actions">
+        <button id="feedback-close-btn" data-i18n="feedback_close">Close</button>
+        <button id="feedback-submit-btn" data-i18n="feedback_submit">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var fab = document.getElementById('feedback-fab');
+      var overlay = document.getElementById('feedback-modal-overlay');
+      var closeBtn = document.getElementById('feedback-close-btn');
+      var submitBtn = document.getElementById('feedback-submit-btn');
+      var textarea = document.getElementById('feedback-text');
+
+      function openModal() { overlay.classList.add('open'); textarea.focus(); }
+      function closeModal() { overlay.classList.remove('open'); textarea.value = ''; }
+
+      fab.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+      submitBtn.addEventListener('click', function() {
+        var msg = textarea.value.trim();
+        if (!msg) return;
+        var subject = encodeURIComponent('[CoinTrendz Radar] Feedback');
+        var body = encodeURIComponent(msg);
+        window.open('mailto:taeshinkim11@gmail.com?subject=' + subject + '&body=' + body, '_blank');
+        closeModal();
+      });
+    })();
+  </script>
 
   <!-- Scripts -->
   <script src="js/api.js"></script>

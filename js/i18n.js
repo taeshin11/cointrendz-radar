@@ -8,9 +8,16 @@ const I18n = (() => {
   let translations = {};
 
   function detectLanguage() {
+    // 1. URL ?lang= param takes highest priority
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && supportedLangs.includes(urlLang)) return urlLang;
+
+    // 2. LocalStorage saved preference
     const saved = localStorage.getItem('ctr_lang');
     if (saved && supportedLangs.includes(saved)) return saved;
 
+    // 3. Browser language
     const userLang = navigator.language || (navigator.languages && navigator.languages[0]) || 'en';
     return supportedLangs.find(l => userLang.startsWith(l)) || 'en';
   }
