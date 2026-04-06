@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ - CoinTrendz Radar</title>
-  <meta name="description" content="Frequently asked questions about CoinTrendz Radar cryptocurrency dashboard.">
+  <title>FAQ - CoinTrendz Radar | Crypto Fear & Greed Index Questions Answered</title>
+  <meta name="description" content="Answers to frequently asked questions about CoinTrendz Radar: how the Fear & Greed Index works, data update frequency, investment use cases, data sources, and more.">
+  <meta name="keywords" content="CoinTrendz Radar FAQ, fear greed index explained, crypto sentiment questions, how crypto dashboard works, trending coins FAQ, bitcoin fear greed FAQ">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://cointrendz-radar.vercel.app/faq.html">
-  <meta property="og:title" content="FAQ - CoinTrendz Radar">
-  <meta property="og:description" content="Frequently asked questions about CoinTrendz Radar cryptocurrency dashboard.">
+  <meta property="og:title" content="FAQ - CoinTrendz Radar | Crypto Fear & Greed Index Questions Answered">
+  <meta property="og:description" content="Everything you need to know about CoinTrendz Radar: Fear & Greed Index, data sources, update frequency, privacy, and how to use the dashboard for smarter crypto decisions.">
   <meta property="og:url" content="https://cointrendz-radar.vercel.app/faq.html">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoinTrendz Radar">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -21,7 +23,6 @@
   </script>
   <link rel="stylesheet" href="css/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
-  <!-- FAQ JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,34 +30,82 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is the Fear & Greed Index?",
+        "name": "What is the Fear & Greed Index and how is it calculated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Fear & Greed Index measures market sentiment on a scale of 0 to 100. Values near 0 indicate extreme fear (potential buying opportunity), while values near 100 indicate extreme greed (potential market correction). The index is calculated from factors including volatility, market momentum, social media, and surveys."
+          "text": "The Crypto Fear & Greed Index is a composite sentiment indicator that measures the overall emotional state of the cryptocurrency market on a scale from 0 (Extreme Fear) to 100 (Extreme Greed). It is calculated daily by Alternative.me using five weighted factors: market volatility (25%), market momentum and volume (25%), social media activity (15%), surveys (15%), and Bitcoin dominance (10%). A score below 25 indicates extreme fear, 25–45 is fear, 46–55 is neutral, 56–75 is greed, and 76–100 is extreme greed."
         }
       },
       {
         "@type": "Question",
-        "name": "How often does the data update?",
+        "name": "How often does the data on CoinTrendz Radar update?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The dashboard auto-refreshes every 60 seconds, pulling the latest data from CoinGecko and Alternative.me APIs."
+          "text": "CoinTrendz Radar auto-refreshes all market data every 60 seconds. Price data, percentage changes, market capitalization, trading volume, top gainers, top losers, and trending coins are all pulled fresh from the CoinGecko API on every refresh cycle. A countdown timer in the dashboard status bar shows exactly how many seconds remain until the next update."
         }
       },
       {
         "@type": "Question",
-        "name": "Is CoinTrendz Radar free?",
+        "name": "What does each sentiment level mean for investors?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, CoinTrendz Radar is completely free to use. No account or subscription is required."
+          "text": "Each level of the Fear & Greed Index suggests a different market climate. Extreme Fear (0-24) often indicates panic selling and may represent a potential buying opportunity for long-term investors. Fear (25-45) suggests negative sentiment but not panic. Neutral (46-55) means the market is balanced. Greed (56-75) suggests optimism and rising prices but warrants caution. Extreme Greed (76-100) historically precedes market corrections as valuations become stretched. These are general observations, not financial advice."
         }
       },
       {
         "@type": "Question",
-        "name": "Is this financial advice?",
+        "name": "How can I use CoinTrendz Radar to make better investment decisions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. CoinTrendz Radar provides data for informational purposes only. Always do your own research and consult a financial advisor before making investment decisions."
+          "text": "CoinTrendz Radar provides context, not directives. Many investors use the Fear & Greed Index as a contrarian signal: buying cautiously when fear is high and reducing exposure when greed is extreme. The Top Gainers table helps spot breakout momentum. Trending Coins shows what the community is talking about. BTC and ETH sparklines give a quick visual on whether the overall market is trending up or down. Always combine this data with your own research, fundamental analysis, and risk management before making any decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does the cryptocurrency data come from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All cryptocurrency price, market cap, volume, and trending data is sourced from the CoinGecko API, one of the world's largest and most trusted crypto data aggregators. CoinGecko pulls data from hundreds of exchanges globally to ensure accuracy. The Fear & Greed Index comes from Alternative.me, which has published this indicator daily since 2018. Neither source is affiliated with CoinTrendz Radar — we are an independent display layer built on top of their public APIs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are Top Gainers and Top Losers determined?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CoinTrendz Radar retrieves data on the top 250 cryptocurrencies by market capitalization from the CoinGecko API. From that list, we sort all coins by their 24-hour percentage price change. The ten coins with the largest positive percentage changes appear in the Top Gainers table. The ten coins with the largest negative percentage changes appear in the Top Losers table. Using a market-cap-ranked pool ensures the results reflect significant coins rather than obscure micro-cap tokens."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Trending Coins and why do they matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trending Coins on CoinTrendz Radar are the coins that have received the most search traffic on the CoinGecko platform in the past 24 hours. When a coin suddenly appears in the trending list, it often signals rising community interest, which can be a leading indicator of price movement. Trending data is particularly useful for spotting coins that are gaining narrative attention before they make larger price moves. However, trending status alone does not predict performance and should be combined with other research."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CoinTrendz Radar available on mobile devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CoinTrendz Radar is fully responsive and optimized for all screen sizes, including smartphones and tablets. The layout adapts automatically from the desktop three-column design to a streamlined single-column mobile layout. All features — the Fear & Greed gauge, price cards, gainers/losers tables, trending coins, and language selector — are fully functional on mobile browsers. No app download is required; simply visit cointrendz-radar.vercel.app in your mobile browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CoinTrendz Radar collect my personal data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CoinTrendz Radar does not collect any personally identifiable information. No account is required to use the service. We store only anonymous, aggregated visit data (timestamps, page URLs, browser language, timezone) for traffic analytics. Your theme and language preferences are saved in your browser's localStorage and never transmitted to our servers. Third-party advertisers (Google AdSense, Adsterra) may set cookies for ad personalization subject to their own privacy policies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CoinTrendz Radar free to use? Are there any premium features?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CoinTrendz Radar is completely free to use with no registration, no subscription, and no hidden fees. All features on the platform — the Fear & Greed Index, live prices, top gainers, top losers, trending coins, sparkline charts, dark mode, and multi-language support — are available to every visitor at no cost. The service is supported by advertising from Google AdSense and Adsterra, which allows us to maintain and improve the platform without charging users."
         }
       }
     ]
@@ -82,53 +131,61 @@
 
   <main class="flex-1 max-w-4xl mx-auto px-4 py-10">
     <article class="card">
-      <h1 class="text-3xl font-bold mb-6" data-i18n="faq">Frequently Asked Questions</h1>
+      <h1 class="text-3xl font-bold mb-2">Frequently Asked Questions</h1>
+      <p class="mb-8 text-sm" style="color: var(--text-secondary);">Everything you need to know about CoinTrendz Radar, the Fear &amp; Greed Index, and how to use crypto sentiment data effectively.</p>
 
-      <div class="space-y-6">
+      <div class="space-y-8">
+
         <div>
-          <h2 class="text-lg font-semibold mb-2">What is the Fear & Greed Index?</h2>
-          <p style="color: var(--text-secondary);">The Fear & Greed Index measures market sentiment on a scale of 0 to 100. Values near 0 indicate extreme fear (potential buying opportunity), while values near 100 indicate extreme greed (potential market correction). The index is calculated from factors including volatility, market momentum, social media, and surveys.</p>
+          <h2 class="text-lg font-semibold mb-3">What is the Fear &amp; Greed Index and how is it calculated?</h2>
+          <p style="color: var(--text-secondary);">The Crypto Fear &amp; Greed Index is a composite sentiment indicator that measures the overall emotional state of the cryptocurrency market on a scale from 0 (Extreme Fear) to 100 (Extreme Greed). It is calculated daily by Alternative.me using five weighted factors: market volatility (25%), market momentum and volume (25%), social media activity (15%), surveys (15%), and Bitcoin dominance (10%). Understanding the methodology behind the index helps investors interpret it correctly — a high volatility reading suggests panic, while high momentum combined with high social activity suggests speculative excitement. A score below 25 indicates extreme fear, 25 to 45 is fear, 46 to 55 is neutral, 56 to 75 is greed, and 76 to 100 is extreme greed.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">How often does the data update?</h2>
-          <p style="color: var(--text-secondary);">The dashboard auto-refreshes every 60 seconds, pulling the latest data from CoinGecko and Alternative.me APIs. You can see the countdown timer in the top bar.</p>
+          <h2 class="text-lg font-semibold mb-3">How often does the data on CoinTrendz Radar update?</h2>
+          <p style="color: var(--text-secondary);">CoinTrendz Radar auto-refreshes all market data every 60 seconds. Every minute, the platform fetches fresh data from the CoinGecko API and Alternative.me API to update price information, percentage changes, market capitalization, 24-hour trading volume, top gainers, top losers, and trending coins. A real-time countdown timer is displayed in the dashboard's status bar at all times so you can see exactly how many seconds remain until the next automatic update. You do not need to manually refresh the page — the dashboard handles this entirely on its own, making it ideal for monitoring open on a secondary monitor or browser tab throughout the trading day.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">Is CoinTrendz Radar free?</h2>
-          <p style="color: var(--text-secondary);">Yes, CoinTrendz Radar is completely free to use. No account or subscription is required.</p>
+          <h2 class="text-lg font-semibold mb-3">What does each sentiment level mean for investors?</h2>
+          <p style="color: var(--text-secondary);">Each zone of the Fear &amp; Greed Index reflects a distinct market climate with different implications for investors. Extreme Fear (0–24) often correlates with panic selling, capitulation events, or major negative news. Historically, these periods have sometimes offered value for disciplined long-term buyers willing to act against the crowd. Fear (25–45) suggests negative sentiment but not full panic — prices may still be declining but conditions are less extreme. Neutral (46–55) reflects a balanced market without strong directional momentum. Greed (56–75) suggests rising optimism and positive momentum, though valuations may be stretching. Extreme Greed (76–100) has historically preceded sharp corrections as enthusiasm outpaces fundamentals. These patterns are observations drawn from historical data, not guarantees, and should never be your sole basis for investment decisions.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">Where does the data come from?</h2>
-          <p style="color: var(--text-secondary);">Cryptocurrency prices, market data, and trending coin data are sourced from the CoinGecko API. The Fear & Greed Index is sourced from Alternative.me.</p>
+          <h2 class="text-lg font-semibold mb-3">How can I use CoinTrendz Radar to make better investment decisions?</h2>
+          <p style="color: var(--text-secondary);">CoinTrendz Radar is a context tool, not a signals service. Many experienced investors use the Fear &amp; Greed Index as one input among many in a contrarian strategy: accumulating positions gradually during periods of extreme fear (when price drops may represent value) and reducing exposure during periods of extreme greed (when risk is elevated). The Top Gainers table is useful for identifying coins showing strong short-term momentum that you may want to research further. The Trending Coins section helps you discover emerging narratives early before they reach mainstream attention. The BTC and ETH sparkline charts provide quick visual confirmation of the overall market direction. We recommend combining CoinTrendz Radar data with on-chain analysis, fundamental research, and sound risk management principles. Nothing on this platform constitutes financial advice.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">How are "Top Gainers" and "Top Losers" determined?</h2>
-          <p style="color: var(--text-secondary);">We fetch the top 100 coins by market cap from CoinGecko and sort them by their 24-hour percentage price change. The top 10 positive changes are "gainers" and the top 10 negative changes are "losers."</p>
+          <h2 class="text-lg font-semibold mb-3">Where does the cryptocurrency data come from?</h2>
+          <p style="color: var(--text-secondary);">All cryptocurrency price, market cap, volume, and trending data is sourced from the CoinGecko public API. CoinGecko is one of the world's largest independent cryptocurrency data platforms, aggregating data from over 900 exchanges and tracking more than 14,000 coins. Their data pipeline normalizes pricing across exchanges to deliver consistent, reliable market data. The Fear &amp; Greed Index is provided exclusively by Alternative.me, which has computed and published this metric every day since 2018. CoinTrendz Radar is an independent tool and is not affiliated with, endorsed by, or officially partnered with CoinGecko or Alternative.me. We display their public data to help users access it more conveniently.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">What are "Trending Coins"?</h2>
-          <p style="color: var(--text-secondary);">Trending coins are the most searched coins on CoinGecko in the last 24 hours. This reflects what the crypto community is currently interested in.</p>
+          <h2 class="text-lg font-semibold mb-3">How are Top Gainers and Top Losers determined?</h2>
+          <p style="color: var(--text-secondary);">CoinTrendz Radar retrieves data on the top 250 cryptocurrencies ranked by market capitalization from the CoinGecko API. We then sort these coins by their 24-hour percentage price change. The ten coins with the largest positive percentage movements are listed in the Top Gainers table, and the ten with the largest negative movements appear in the Top Losers table. Filtering to the top 250 by market cap ensures that the results reflect coins with meaningful liquidity and real market activity, rather than obscure micro-cap or low-volume tokens where extreme percentage changes may result from thin order books and manipulation. Both tables display the coin name, ticker symbol, current price in USD, and the precise 24-hour percentage change.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">Is this financial advice?</h2>
-          <p style="color: var(--text-secondary);">No. CoinTrendz Radar provides data for informational purposes only. Always do your own research (DYOR) and consult a qualified financial advisor before making investment decisions.</p>
+          <h2 class="text-lg font-semibold mb-3">What are Trending Coins and why do they matter?</h2>
+          <p style="color: var(--text-secondary);">The Trending Coins section displays the seven coins that have received the highest search volume on the CoinGecko platform over the past 24 hours. When a coin suddenly enters the trending list, it often signals a surge in community and retail interest that may be driven by news, social media discussion, a new product launch, or a notable price move. Trending status is a powerful leading indicator because retail investor attention frequently precedes price activity. By monitoring trending coins daily, you can stay informed about emerging narratives and make more timely research decisions. That said, trending status alone does not confirm quality or long-term value — always investigate the reason a coin is trending before making any investment decision.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">Can I change the language?</h2>
-          <p style="color: var(--text-secondary);">Yes. Use the language selector in the top-right corner of the page. We support English, Korean, Japanese, Chinese, Spanish, French, German, and Portuguese.</p>
+          <h2 class="text-lg font-semibold mb-3">Is CoinTrendz Radar available on mobile devices and tablets?</h2>
+          <p style="color: var(--text-secondary);">Yes, CoinTrendz Radar is fully responsive and designed to work beautifully on all devices, including smartphones, tablets, and desktop computers. The layout adapts automatically: on large screens you see a three-column overview with side-by-side price cards and gainers/losers tables, while on smaller screens elements stack vertically for comfortable reading without horizontal scrolling. All interactive elements — the language selector, dark mode toggle, gauge, tables, and trending badges — are touch-friendly and work seamlessly in mobile browsers such as Safari on iOS and Chrome on Android. No app download is necessary; simply visit cointrendz-radar.vercel.app from your device's browser.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold mb-2">How can I provide feedback?</h2>
-          <p style="color: var(--text-secondary);">Send us an email at <a href="mailto:taeshinkim11@gmail.com" class="text-primary underline">taeshinkim11@gmail.com</a>. We welcome bug reports, feature suggestions, and general feedback.</p>
+          <h2 class="text-lg font-semibold mb-3">Does CoinTrendz Radar collect my personal data or track me?</h2>
+          <p style="color: var(--text-secondary);">CoinTrendz Radar does not collect any personally identifiable information (PII). You do not need to create an account, provide an email address, or share any personal details to use the service. Anonymous visit data — such as timestamps, page URLs, browser language, and timezone — may be logged to help us understand traffic patterns and improve the service. This data cannot be linked back to any individual. Your theme preference (light or dark) and language choice are stored in your browser's localStorage and never transmitted to external servers. Third-party advertising networks (Google AdSense and Adsterra) that serve ads on the platform may use cookies for ad personalization; please refer to our Privacy Policy and those networks' own privacy policies for details.</p>
         </div>
+
+        <div>
+          <h2 class="text-lg font-semibold mb-3">Is CoinTrendz Radar free? Are there any premium or paid features?</h2>
+          <p style="color: var(--text-secondary);">CoinTrendz Radar is 100% free to use. There is no registration process, no subscription tier, no freemium model, and no paid features gated behind a paywall. Every feature on the platform — the live Fear &amp; Greed Index gauge, Bitcoin and Ethereum price cards with sparkline charts, Top Gainers and Losers tables, Trending Coins, dark mode, and multi-language support across eight languages — is available to every visitor at no cost. The platform is supported by advertising through Google AdSense and Adsterra, which allows us to cover hosting and development costs without passing any expense to our users. We are committed to keeping CoinTrendz Radar free for the foreseeable future.</p>
+        </div>
+
       </div>
     </article>
   </main>
@@ -139,8 +196,8 @@
         <a href="/" class="hover:text-primary">Home</a>
         <a href="about.html" class="hover:text-primary">About</a>
         <a href="faq.html" class="hover:text-primary">FAQ</a>
-        <a href="privacy.html" class="hover:text-primary">Privacy</a>
-        <a href="terms.html" class="hover:text-primary">Terms</a>
+        <a href="privacy.html" class="hover:text-primary">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-primary">Terms of Service</a>
       </nav>
       <p>&copy; 2026 CoinTrendz Radar. All rights reserved.</p>
     </div>
